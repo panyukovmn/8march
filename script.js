@@ -8,28 +8,22 @@ function getUrlParams() {
 }
 
 function getPatronymic(name, gender) {
-    // Простая логика для формирования отчества по имени и полу
-    const maleEndings = ['й', 'ь', 'р', 'н', 'в', 'с', 'д', 'т', 'л', 'к', 'п', 'г', 'б', 'з', 'м', 'ц', 'ч', 'ш', 'щ', 'ф', 'х'];
-    const femaleEndings = ['а', 'я', 'ия', 'да', 'ра', 'ва', 'на', 'ма', 'ла', 'ка', 'га', 'за', 'са', 'ча', 'ша', 'жа'];
-    
-    const lastChar = name.slice(-1);
-    const lastTwoChars = name.slice(-2);
+    // Улучшенная логика для формирования отчества по имени и полу
+    const upperName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
     
     if (gender === 'male') {
-        if (['а', 'я'].includes(lastChar)) {
-            return name.slice(0, -1) + 'евич';
+        // Для мужских имен
+        if (["а", "я"].includes(name.slice(-1).toLowerCase())) {
+            return name.slice(0, -1) + "евич";
         } else {
-            return name + 'ович';
+            return name + "ович";
         }
     } else {
-        if (maleEndings.includes(lastChar)) {
-            return name + 'овна';
-        } else if (['а', 'я'].includes(lastChar)) {
-            return name.slice(0, -1) + 'евна';
-        } else if (femaleEndings.includes(lastTwoChars)) {
-            return name + 'овна';
+        // Для женских имен
+        if (["а", "я"].includes(name.slice(-1).toLowerCase())) {
+            return name.slice(0, -1) + "евна";
         } else {
-            return name + 'овна';
+            return name + "овна";
         }
     }
 }
@@ -38,16 +32,24 @@ function displayGreeting() {
     const params = getUrlParams();
     const firstName = params.firstname || 'Иван';
     const lastName = params.lastname || 'Иванов';
+    const patronymic = params.patronymic || '';
     const gender = params.gender || 'female'; // по умолчанию женский
     
-    const patronymic = getPatronymic(firstName, gender);
     const prefix = gender === 'male' ? 'Уважаемый' : 'Уважаемая';
     
     const prefixElement = document.getElementById('greeting-prefix');
     const namePatronymicElement = document.getElementById('greeting-name-patronymic');
     
     prefixElement.textContent = `${prefix}`;
-    namePatronymicElement.textContent = `${firstName} ${patronymic}`;
+    // Проверяем, заданы ли имя и отчество
+    if ((firstName.trim() === '' || firstName === 'Иван') && patronymic.trim() === '') {
+        namePatronymicElement.textContent = 'коллега';
+    } else if (patronymic.trim() === '') {
+        namePatronymicElement.textContent = `${firstName}`;
+    } else {
+        namePatronymicElement.textContent = `${firstName} ${patronymic}`;
+    }
+
 }
 
 // Вызываем функцию после загрузки страницы
