@@ -50,7 +50,14 @@ function displayGreeting() {
         namePatronymicElement.textContent = `${firstName} ${patronymic}`;
     }
 
+    // Добавляем класс после отображения текста
+    document.body.classList.add('loaded');
+    document.querySelector('.container').classList.add('loaded');
 }
 
-// Вызываем функцию после загрузки страницы
-window.addEventListener('load', displayGreeting);
+// Вызываем функцию сразу, не дожидаясь полной загрузки
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', displayGreeting);
+} else {
+    displayGreeting();
+}

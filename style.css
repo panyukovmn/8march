@@ -12,6 +12,11 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    background-color: #ffffff; /* временный белый фон */
+}
+
+body.loaded {
+    background-image: url('fon.jpg');
 }
 
 .container {
@@ -23,10 +28,16 @@ body {
     max-width: 600px;
     width: 100%;
     margin-top: 100px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.container.loaded {
+    opacity: 1;
 }
 
 h1 {
-    color: #ff6b6b;
+    color: #fd4c4c;
     margin-bottom: 5px;
     font-size: 3.2em;
     font-family: 'Great Vibes', cursive;
@@ -34,7 +45,7 @@ h1 {
 }
 
 p.main-text {
-    color: #ff6b6b;
+    color: #fd4c4c;
     font-size: 2.1em;
     line-height: 1.0;
     margin: 15px 0;
@@ -44,7 +55,7 @@ p.main-text {
 }
 
 p.event-text {
-    color: #ff6b6b;
+    color: #fd4c4c;
     font-size: 2.1em;
     line-height: 1.0;
     margin: 15px 0;
