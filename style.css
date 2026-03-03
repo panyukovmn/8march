@@ -42,6 +42,7 @@ h1 {
     font-size: 3.0em;
     font-family: 'Great Vibes', cursive;
     display: block;
+    line-height: 0.9;
 }
 
 p.main-text {
