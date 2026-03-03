@@ -39,14 +39,14 @@ body.loaded {
 h1 {
     color: #fd4c4c;
     margin-bottom: 5px;
-    font-size: 3.2em;
+    font-size: 3.0em;
     font-family: 'Great Vibes', cursive;
     display: block;
 }
 
 p.main-text {
     color: #fd4c4c;
-    font-size: 2.1em;
+    font-size: 2.0em;
     line-height: 1.0;
     margin: 15px 0;
     font-family: 'Great Vibes', cursive;
@@ -56,7 +56,7 @@ p.main-text {
 
 p.event-text {
     color: #fd4c4c;
-    font-size: 2.1em;
+    font-size: 2.0em;
     line-height: 1.0;
     margin: 15px 0;
     font-family: 'Great Vibes', cursive;
