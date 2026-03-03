@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: url('fon.jpg') no-repeat center center fixed; background-size: cover;
+    background: url('fon.jpeg') no-repeat center center fixed; background-size: cover;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -16,7 +16,7 @@ body {
 }
 
 body.loaded {
-    background-image: url('fon.jpg');
+    background-image: url('fon.jpeg');
 }
 
 .container {
